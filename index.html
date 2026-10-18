@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="ru" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Шахта</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="app">
+
+  <canvas id="game" width="960" height="600"></canvas>
+
+  <!-- ГЛАВНОЕ МЕНЮ -->
+  <div id="menu" class="screen">
+    <div class="menu-inner">
+      <div class="title-wrap">
+        <div class="lantern l1"></div>
+        <div class="lantern l2"></div>
+        <div class="lantern l3"></div>
+        <h1 class="game-title" data-i18n="title">Шахта</h1>
+        <p class="game-subtitle" data-i18n="subtitle">Заброшенная шахта</p>
+      </div>
+      <div class="menu-buttons">
+        <button id="btn-start" class="btn-primary" data-i18n="start">Начать игру</button>
+        <button id="btn-levels" data-i18n="levels">Уровни</button>
+        <button id="btn-settings" data-i18n="settings">Настройки</button>
+      </div>
+      <p class="controls-hint" data-i18n="controlsHint">← → / A D — движение · Space / W — прыжок</p>
+    </div>
+  </div>
+
+  <!-- УРОВНИ -->
+  <div id="levels-screen" class="screen hidden">
+    <div class="panel">
+      <h2 data-i18n="levels">Уровни</h2>
+      <div id="level-list" class="level-list"></div>
+      <button class="btn-back" data-i18n="back">Назад</button>
+    </div>
+  </div>
+
+  <!-- НАСТРОЙКИ -->
+  <div id="settings-screen" class="screen hidden">
+    <div class="panel">
+      <h2 data-i18n="settings">Настройки</h2>
+      <div class="settings-content">
+        <div class="setting-row">
+          <span data-i18n="theme">Тема</span>
+          <button id="theme-toggle" class="toggle">Тёмная</button>
+        </div>
+        <div class="setting-row">
+          <span data-i18n="language">Язык</span>
+          <button id="lang-toggle" class="toggle">RU</button>
+        </div>
+        <div class="setting-row">
+          <span data-i18n="volume">Громкость</span>
+          <input type="range" id="volume" min="0" max="100" value="50">
+        </div>
+      </div>
+      <button class="btn-back" data-i18n="back">Назад</button>
+    </div>
+  </div>
+
+  <!-- HUD -->
+  <div id="hud" class="hidden">
+    <div class="hud-item"><span class="hud-icon">💎</span><span id="hud-diamonds">0/0</span></div>
+    <div class="hud-item"><span class="hud-icon">⏱</span><span id="hud-time">0:00</span></div>
+    <div class="hud-item"><span class="hud-icon">🏆</span><span id="hud-best">—</span></div>
+  </div>
+
+  <button id="btn-pause" class="hidden" aria-label="pause">⏸</button>
+
+  <!-- ОВЕРЛЕИ -->
+  <div id="pause-overlay" class="overlay hidden">
+    <div class="overlay-box">
+      <h2 data-i18n="pause">Пауза</h2>
+      <button id="btn-resume" class="btn-primary" data-i18n="resume">Продолжить</button>
+      <button id="btn-restart" data-i18n="restart">Заново</button>
+      <button id="btn-menu" data-i18n="menu">Меню</button>
+    </div>
+  </div>
+
+  <div id="complete-overlay" class="overlay hidden">
+    <div class="overlay-box">
+      <h2 id="complete-title">Уровень пройден!</h2>
+      <p id="complete-time"></p>
+      <button id="btn-next" class="btn-primary" data-i18n="next">Далее</button>
+    </div>
+  </div>
+
+  <div id="gameover-overlay" class="overlay hidden">
+    <div class="overlay-box">
+      <h2 data-i18n="gameOver">Вы погибли</h2>
+      <button id="btn-retry" class="btn-primary" data-i18n="restart">Заново</button>
+      <button id="btn-go-menu" data-i18n="menu">Меню</button>
+    </div>
+  </div>
+
+  <div id="victory-overlay" class="overlay hidden">
+    <div class="overlay-box">
+      <h2 data-i18n="gameComplete">Вы выбрались наверх!</h2>
+      <p id="victory-time"></p>
+      <p id="victory-best"></p>
+      <button id="btn-victory-menu" class="btn-primary" data-i18n="menu">Меню</button>
+    </div>
+  </div>
+
+  <!-- МОБИЛЬНОЕ УПРАВЛЕНИЕ -->
+  <div id="touch-controls" class="hidden">
+    <button class="touch-btn" id="btn-left">◀</button>
+    <button class="touch-btn touch-jump" id="btn-jump">▲</button>
+    <button class="touch-btn" id="btn-right">▶</button>
+  </div>
+
+</div>
+<script type="module" src="js/main.js"></script>
+</body>
+</html>
